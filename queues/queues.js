@@ -1,5 +1,8 @@
 import { Queue } from "bullmq";
+import { redisConnection } from "../config.js";
 
-export const jobDispatchScheduler = new Queue("job-dispatcher-scheduler");
-export const jobCriScheduler = new Queue("job-cri");
-export const jobWatcherScheduler = new Queue("job-watcher");
+const queueOpts = { connection: redisConnection };
+
+export const jobDispatchScheduler = new Queue("job-dispatcher", queueOpts);
+export const jobCriScheduler = new Queue("job-cri", queueOpts);
+export const jobWatcherScheduler = new Queue("job-watcher", queueOpts);

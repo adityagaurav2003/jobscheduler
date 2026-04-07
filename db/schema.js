@@ -15,6 +15,7 @@ export const jobStateTable = pgTable('jobs', {
   image: text().notNull(),
   cmd: text().default('null'),
   state: jobStatusEnum().default('submitted').notNull(),
+  containerId: text('container_id'),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').$onUpdate(() => new Date()),
 });
